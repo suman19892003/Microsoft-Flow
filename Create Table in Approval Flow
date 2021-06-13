@@ -1,0 +1,16 @@
+Approval Type: Can be anything(Create Approval/Start and Wait for an approval)
+
+Details:
+
+Below are the request details.
+|  |  | 
+|-----------|-------------|
+| Requested By  | @{triggerOutputs()?['body/Requester/DisplayName']} | 
+| Date Created | @{triggerOutputs()?['body/Created']} | 
+| Request Type  | @{triggerOutputs()?['body/TypeOfRequest']} | 
+| Site Title | @{triggerOutputs()?['body/Title']} | 
+| Site Description | @{triggerOutputs()?['body/Description']} | 
+| Primary Owner | @{triggerOutputs()?['body/PrimaryOwner/DisplayName']} | 
+| Secondary Owner | @{triggerOutputs()?['body/SecondaryOwner/DisplayName']} | 
+| Department | @{triggerOutputs()?['body/Department']} | 
+| Region | @{triggerOutputs()?['body/Region']} | 
