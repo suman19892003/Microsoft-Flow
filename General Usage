@@ -1,0 +1,30 @@
+//Get Users from SharePoint Group
+Add Send an Http Request to SharePoint
+Methos:Get, URL : _api/web/siteGroups/getByName('Fixed Flow QA Approvers')/users ,
+Add Select, From : body('Send_an_HTTP_request_to_SharePoint_:_QA_Approvers')?['d']?['results'] , Map : item()?['Email']
+Add Compose, join(body('Select'),';'),
+It will return all users from SharePoint Group in compose action
+
+//For Giving Full Access
+Add Send an Http Request to SharePoint
+Methos:Post, URL : _api/web/lists/getbytitle('FixedFlowFinal')/items(@{triggerOutputs()?['body/ID']})/roleassignments/addroleassignment(principalid='247',roleDefId=1073741829) ,
+Here in URL, principalid is group id for which we want to give permission for list item.
+1073741829 - Full Control
+1073741826 - Read
+
+//For Adding Trigger Condition in when an item is created or modified
+@equals(triggerOutputs()?['body/WorkflowStage'],'PowerAutomate') //For Single line text column
+@equals(triggerOutputs()?['body/CopyDoc/Value'],'Yes') //For Choice Column
+
+//For setting default permission to list item
+_api/web/lists/getByTitle('LISTNAME')/items(ITEMID})/ResetRoleInheritance()
+
+//For Copy file using get file path
+Add Compose, /Submission Queue/@{triggerOutputs()?['body/{FilenameWithExtension}']}
+Add get File Content using Path, FilePath: output compose
+Add Create Path, File Content: @{body('Get_file_content_using_path')}
+
+
+
+
+
