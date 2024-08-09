@@ -24,6 +24,11 @@ Add Compose, /Submission Queue/@{triggerOutputs()?['body/{FilenameWithExtension}
 Add get File Content using Path, FilePath: output compose
 Add Create Path, File Content: @{body('Get_file_content_using_path')}
 
+//Delete File : The response is not in a JSON format error
+encodeUriComponent(outputs('Create_file')?['body/Path'])
+In Power Automate, to return a uniform resource identifier (URI) encoded version for a string by replacing URL-unsafe characters with escape characters.
+PowerAutomate add special characters and spaces when trying to read file with spaces or special character.
+
 
 
 
