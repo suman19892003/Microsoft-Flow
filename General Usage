@@ -15,6 +15,7 @@ Here in URL, principalid is group id for which we want to give permission for li
 //For Adding Trigger Condition in when an item is created or modified
 @equals(triggerOutputs()?['body/WorkflowStage'],'PowerAutomate') //For Single line text column
 @equals(triggerOutputs()?['body/CopyDoc/Value'],'Yes') //For Choice Column
+@triggerBody()?['StartApproval'] //For Yes/No Column
 
 //For setting default permission to list item
 _api/web/lists/getByTitle('LISTNAME')/items(ITEMID})/ResetRoleInheritance()
